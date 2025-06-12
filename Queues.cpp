@@ -9,7 +9,8 @@ private:
     int queue_array[5];
 
 public:
-    Queues(){
+    Queues()
+    {
         FRONT = -1;
         REAR = -1;
     }
@@ -21,30 +22,30 @@ public:
         cin >> num;
         cout << endl;
 
-    // 1. Cek apakah antrian penuh
-    if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
-    {
-        cout << "\nQueue overflow\n"; // 1.a
-        return;                       // 1. b
-    }
+        // 1. Cek apakah antrian penuh
+        if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
+        {
+            cout << "\nQueue overflow\n"; // 1.a
+             return;                       // 1. b
+        }
 
-    //2. cek apakah antrian kosong
-    if (FRONT == -1)
-    {
-        FRONT = 0; //2.a
-        REAR = 0; //2.b
-    }
-    else
-    {
-        // jika REAR berada di posisi terakhir array, kembali ke awal array
-        if (REAR == max - 1)
-            REAR = 0;
+            //2. cek apakah antrian kosong
+             if (FRONT == -1)
+        {
+             FRONT = 0; //2.a
+            REAR = 0; //2.b
+         }
         else
-            REAR = REAR + 1;
-    }
-    queue_array[REAR] = num;
+        {
+             // jika REAR berada di posisi terakhir array, kembali ke awal array
+             if (REAR == max - 1)
+                REAR = 0;
+            else
+                 REAR = REAR + 1;
+         }
+         queue_array[REAR] = num;
 
-};
+    }
 
 void remove()
 {
@@ -85,7 +86,16 @@ void display()
     }
     cout << "\nElements in the queue are...\n";
 
+    // jika FRONT_position <= REAR_position, iterasi dari FRONT hingga REAR
+    if (FRONT_position <= REAR_position)
+    {
+        while (FRONT_position <= REAR_position)
+        {
+            cout << queue_array[FRONT_position] << "  ";
+            FRONT_position++;
+        }
+        cout << endl;
+    }
     
-
 };
 
